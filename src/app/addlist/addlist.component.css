@@ -1,0 +1,20 @@
+.contact_list_wraper input {
+    height: 38px;
+    border-radius: 8px;
+    box-shadow: unset !important;
+    border: 1px solid;
+    text-indent: 10px;
+}
+.show_data{
+    list-style: unset;
+    font-size: 18px;
+    }
+
+
+@media only screen and (min-width:768px){
+  .contact_list_wraper {
+      display: flex;
+      justify-content: space-evenly;
+      max-width: 500px;
+  }
+}

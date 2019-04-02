@@ -1,0 +1,16 @@
+<div class="container">
+<ol>
+  <h2 class="my-5 ">Global Feeds </h2>
+  <li *ngFor="let getfeeddatas of getfeeddata | paginate: config " style="border-bottom:1px solid #eeeeee " class="mb-3"  >
+  
+    <div class="mb-3"> <i class="fas fa-laugh-beam face"></i> <span class="d-inline-block"> 
+      <p class="mb-0" style="font-size:12px">userid = {{getfeeddatas.userId}}</p> 
+      <p class="mb-0" style="font-size:12px">Id = {{getfeeddatas.id}} </p></span> 
+    </div>  
+      <h4>{{getfeeddatas.title}} </h4>  
+      <p>Body = {{getfeeddatas.body}} </p>
+  </li>
+</ol>
+
+<pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+</div>

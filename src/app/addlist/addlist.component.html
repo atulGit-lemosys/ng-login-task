@@ -1,0 +1,21 @@
+<div class="container">
+    <h1 class="text-center">Contacts</h1>
+    <div class="form-group">
+      <label>name</label>
+      <input #name placeholder="name" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>phone</label>
+      <input #phone placeholder="Phone" class="form-control" />
+    </div>
+    <div class="form-group">
+      <button  class="form-control btn btn-primary " (click)="addContact(name.value,phone.value)">Add Contact</button>
+    </div>
+
+    <ul class="show_data m-auto w-100">
+        <li  *ngFor="let contact of contactsArrayvar" style="margin-bottom: 10px;">
+            <span > {{contact.descr}}</span>
+            <button class="btn btn-primary " (click)="removeContact(contact)">Delete</button>
+        </li>
+    </ul>
+</div>
