@@ -6,13 +6,17 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class FeedService {
-  private feedUrl = 'https://jsonplaceholder.typicode.com/posts';
+  // private feedUrl = 'https://jsonplaceholder.typicode.com/posts';
+ private feedUrl = 'https://angular.cppatidar.com/angular/webservice/webservice.php';
 
   constructor(private feedHTTP:  HttpClient ) { }
-
-
   feedlist():Observable<any>{
-    return this.feedHTTP.get<any>(this.feedUrl)
+    const feedparameter = new HttpParams().set('method',"getFeeds");
+    return this.feedHTTP.post<any>(this.feedUrl ,feedparameter)
+  }
+  singlefeed(activeslug):Observable<any>{
+    const feedparameter = new HttpParams().set('method',"getFeedBySlug").set('data',JSON.stringify([{"slug":activeslug}])) ;
+    return this.feedHTTP.post<any>(this.feedUrl ,feedparameter)
   }
 
 

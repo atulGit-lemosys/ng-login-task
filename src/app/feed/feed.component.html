@@ -1,16 +1,19 @@
 <div class="container">
 <ol>
-  <h2 class="my-5 ">Global Feeds <img src="../assets/images/smiley-cyrus.jpg"/> </h2>
-  <li *ngFor="let getfeeddatas of getfeeddata | paginate: config " style="border-bottom:1px solid #eeeeee " class="mb-3"  >
+  <h2 class="my-5 ">Global Feeds  </h2>
+  <li *ngFor="let getfeeddatas of getfeeddata | paginate: config ;let i = index " style="border-bottom:1px solid #eeeeee " class="mb-3"  >
   
-    <div class="mb-3"> <i class="fas fa-laugh-beam face"></i> <span class="d-inline-block"> 
-      <p class="mb-0" style="font-size:12px">userid = {{getfeeddatas.userId}}</p> 
-      <p class="mb-0" style="font-size:12px">Id = {{getfeeddatas.id}} </p></span> 
+    <div class="mb-3">
+      <span class="d-inline-block"> 
+        <p class="mb-0 ml-5" style="font-size:15px">Id = {{getfeeddatas.id}} </p>
+        <p class="mb-0 ml-5" style="font-size:15px">slug = {{getfeeddatas.title}}</p> 
+        <p class="mb-0 ml-5" >{{getfeeddatas.created_datetime}}</p> 
+      </span> 
     </div>  
-      <h4>{{getfeeddatas.title}} </h4>  
-      <p>Body = {{getfeeddatas.body}} </p>
+      <h4 (click)="getslug(getfeeddatas.slug)" > {{getfeeddatas.slug}} </h4>  
+      <div><a href="javascript:void(0)" routerLink = "/singlefeed"  >Read More... </a> </div>
   </li>
 </ol>
-
 <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
 </div>
+

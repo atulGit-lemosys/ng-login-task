@@ -23,6 +23,7 @@ import { UserService } from './user/user.service';
 import { FeedComponent } from './feed/feed.component';
 import { FeedService } from './feed/feed.service';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { SinglefeedComponent } from './feed/singlefeed/singlefeed.component';
 
 @NgModule({
   imports:      [ 
@@ -35,20 +36,20 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
       {path:'home', component: HomeComponent},
       {path:'addlist', component: AddlistComponent},
       {path:'feed', component: FeedComponent},
+      {path:'singlefeed', component: SinglefeedComponent},
       {path:'dashboard', component: DashboardComponent,canActivate:[DashAuthGuard]},
       {path:'user',component: UserComponent,
        children:[
          {path:'signin',component:SignInComponent},
          {path:'signup',component:SignUpComponent},
          {path:'',component:SignInComponent}
-       ]
-       },
+       ]},
       { path: "", redirectTo: "home", pathMatch: "full" },
       {path:'**', component: PagenotfoundComponent},
 
    ])
   ], 
-  declarations: [ AppComponent, HelloComponent, HomeComponent, HeaderComponent, FooterComponent, DashboardComponent, AddlistComponent, UserComponent, SignInComponent, SignUpComponent, FeedComponent, PagenotfoundComponent ],
+  declarations: [ AppComponent, HelloComponent, HomeComponent, HeaderComponent, FooterComponent, DashboardComponent, AddlistComponent, UserComponent, SignInComponent, SignUpComponent, FeedComponent, PagenotfoundComponent, SinglefeedComponent ],
   bootstrap:    [ AppComponent ],
   providers: [MyserviceService, UserService,DashAuthGuard, FeedService]
 })
