@@ -1,10 +1,11 @@
 <div class="container py-5">
- <div class="mb-3"><img style="height:100px;" src="{{getactiveslug.image}}">
+ <div class="mb-3"><img style="height:100px;" src={{getactiveslug?getactiveslug.image:0}}  />
  <span class="d-inline-block">
-   <p class="mb-0 ml-5" style="font-size:15px">Id = {{getactiveslug.id}} </p>
-   <p class="mb-0 ml-5" style="font-size:15px">slug = {{getactiveslug.slug}}</p>
+   <p class="mb-0 ml-5" style="font-size:15px">Id = {{getactiveslug?getactiveslug.id:''}} </p>
+   <p class="mb-0 ml-5" style="font-size:15px">slug = {{getactiveslug?getactiveslug.slug:''}}</p>
    </span>
+   <span class="float-right text-info"> <p class="mb-0 ml-5" >{{getactiveslug?getactiveslug.created_datetime:'' }}</p> </span>
    </div>
-   <h4> {{getactiveslug.title}} </h4>
-   <p> {{getactiveslug.description}} </p>
+   <h4>{{getactiveslug?getactiveslug.title:''}} </h4>
+   <p> {{getactiveslug?getactiveslug.description:''}} </p>
 </div>

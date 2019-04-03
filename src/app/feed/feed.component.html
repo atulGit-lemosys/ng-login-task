@@ -1,17 +1,17 @@
 <div class="container">
 <ol>
   <h2 class="my-5 ">Global Feeds  </h2>
-  <li *ngFor="let getfeeddatas of getfeeddata | paginate: config ;let i = index " style="border-bottom:1px solid #eeeeee " class="mb-3"  >
+  <li *ngFor="let getfeeddatas of getfeeddata | paginate: config ;let i = index " style="border-bottom:1px solid #eeeeee " class="mb-3 pb-3"  >
   
-    <div class="mb-3">
+    <div class="mb-3"><img style="height:100px;" src="{{getfeeddatas.image}}" /> 
       <span class="d-inline-block"> 
         <p class="mb-0 ml-5" style="font-size:15px">Id = {{getfeeddatas.id}} </p>
         <p class="mb-0 ml-5" style="font-size:15px">slug = {{getfeeddatas.title}}</p> 
-        <p class="mb-0 ml-5" >{{getfeeddatas.created_datetime}}</p> 
       </span> 
-    </div>  
-      <h4 (click)="getslug(getfeeddatas.slug)" > {{getfeeddatas.slug}} </h4>  
-      <div><a href="javascript:void(0)" routerLink = "/singlefeed"  >Read More... </a> </div>
+      <span class="float-right text-info"> <p class="mb-0 ml-5" >{{getfeeddatas.created_datetime | slice:0:10}} <span class="ml-2 font-weight-bold">{{getfeeddatas.created_datetime | slice:10:16}} </span> </p> </span>
+    </div> 
+      <h4 > {{getfeeddatas.slug}} </h4>  
+      <div><a (click)="getslug(getfeeddatas.slug)"  href="javascript:void(0)"  >Read More... </a> </div>
   </li>
 </ol>
 <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>

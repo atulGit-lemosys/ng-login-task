@@ -8,12 +8,11 @@ import {  ActivatedRoute, Router,Params  } from '@angular/router';
   styleUrls: ['./singlefeed.component.css']
 })
 export class SinglefeedComponent implements OnInit {
-getactiveslug;
+getactiveslug:any;
 activeSlug;
 
   constructor(private feedservice: FeedService,private router: ActivatedRoute) { 
     this.router.queryParams.subscribe(params => {
-      console.log(params.page);
       this.activeSlug = params.page;
 
     });
@@ -24,9 +23,9 @@ activeSlug;
     this.feedservice.singlefeed(this.activeSlug).subscribe(slugdata => {
         if(slugdata.status==true){
             this.getactiveslug =  slugdata.data;
-            console.log(slugdata)
+           // console.log(slugdata)
         }
-          
+          console.log(this.getactiveslug)
         })
   }
 
