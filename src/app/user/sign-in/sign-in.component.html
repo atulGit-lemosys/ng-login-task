@@ -1,7 +1,8 @@
  <div class="container">
+   <h2 > Sign in </h2>
     <form (ngSubmit)="loginuser()" [formGroup]="signin" >
       <div class="form-group">
-        <label for="email">User Name</label>
+        <label for="email">Email</label>
         <input type="text" formControlName="email" class="form-control" id="email" name="email">
       </div>
       <div *ngIf="signin.get('email').invalid && signin.get('email').touched " class="alert alert-danger" >

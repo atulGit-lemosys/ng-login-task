@@ -29,9 +29,9 @@ export class SignInComponent implements OnInit {
    loginuser() {
        var formdata=this.signin.value;  
           this.getservise.login(formdata).subscribe( responseData =>
-          {console.log('hello' + ' ' + responseData)
-               if(responseData){
+          {  if(responseData){
                 this.isLogin = true;
+                localStorage.setItem('is_login', "true");
                 this.routs.navigate(['/dashboard']);
                }else{
                  alert(' please check email and password are incorrect')

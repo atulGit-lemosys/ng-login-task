@@ -28,6 +28,7 @@ export class SignUpComponent implements OnInit {
           this.getservise.signup(signupformdata).subscribe( responseData =>
           {
             if(responseData.status=true){
+              this.signup.reset();
                  this.error_msg = responseData.message;
                }else{
                  alert(' Something wrong');

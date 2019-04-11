@@ -34,9 +34,9 @@ import { SinglefeedComponent } from './feed/singlefeed/singlefeed.component';
     HttpClientModule,
      RouterModule.forRoot([
       {path:'home', component: HomeComponent},
-      {path:'addlist', component: AddlistComponent},
-      {path:'feed', component: FeedComponent},
-      {path:'singlefeed', component: SinglefeedComponent},
+      {path:'addlist', component: AddlistComponent,canActivate:[DashAuthGuard]},
+      {path:'feed', component: FeedComponent,canActivate:[DashAuthGuard]},
+      {path:'singlefeed/:slug', component: SinglefeedComponent},
       {path:'dashboard', component: DashboardComponent,canActivate:[DashAuthGuard]},
       {path:'user',component: UserComponent,
        children:[

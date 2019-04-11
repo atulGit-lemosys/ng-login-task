@@ -11,10 +11,11 @@ import { UserService } from '../user/user.service';
 })
 
 export class DashboardComponent implements OnInit {
- 
+ username ;
   constructor(private routs: Router, private userservise:UserService ) { }
 
   ngOnInit() {
+    this.username = this.userservise.getusername()
   }
 
 }

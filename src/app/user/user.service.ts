@@ -1,35 +1,38 @@
 import { Injectable } from '@angular/core';
-// import {  User } from './user';
 import { HttpClient , HttpParams,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { Router } from '@angular/router';
 
 
 @Injectable()
 export class UserService {
   currentuser;
+  data;
 
   private url = 'https://angular.cppatidar.com/angular/webservice/webservice.php';
 
-  constructor(private Http: HttpClient) {  }
+  constructor(private Http: HttpClient, private routs: Router) {  }
 
   islogedinuser(){
-    if( localStorage.getItem('username')== 'true'){
+    if( localStorage.getItem('is_login')=='true'){
       return true;
     }
+    // else if( localStorage.getItem('is_login')=='false'){
+    //   return false;
+    // }
     else{
       return false;
     }
   }
-
+  getusername(){
+    return localStorage.getItem("username")
+  }
   login(formdata:any): Observable<any> {
-    console.log(formdata);
      const  postingData = new  HttpParams().set('method', "login").set('data', JSON.stringify([{"email":formdata.email,"password":formdata.password}]));
-     console.log(postingData);
-    return this.Http.post<any>(this.url,postingData).pipe(map(apiResponse => {console.log(apiResponse);
+
+    return this.Http.post<any>(this.url,postingData).pipe(map(apiResponse => {
       if (apiResponse && apiResponse.status==true) {
-        console.log(apiResponse.data.username);
           localStorage.setItem('is_login', "true");
           localStorage.setItem('username', apiResponse.data.username);
           this.data = apiResponse.data.username;
@@ -44,16 +47,11 @@ export class UserService {
   }
 
   logout(): void {
-    localStorage.clear();
+    localStorage.setItem('is_login','false')
+    this.routs.navigate(['user/signin']);
+   // localStorage.clear();
   }
 
 
-  check(uname: string, pwd: string)  {
-    if( uname == "admin" && pwd == "admin12345" ) {
-    localStorage.setItem('username',"uname");
-    return true;
-    }    else {
-      return false;
-    }
-  }
+
 }
