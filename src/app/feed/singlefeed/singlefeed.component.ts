@@ -12,21 +12,17 @@ getactiveslug:any;
 activeSlug;
 
   constructor(private feedservice: FeedService,private router: ActivatedRoute) { 
-    this.router.queryParams.subscribe(params => {
-      this.activeSlug = params.page;
-
-    });
   }
 
 
   ngOnInit() {
+    let slug = this.router.snapshot.params['slug'];
+    this.activeSlug = slug;
     this.feedservice.singlefeed(this.activeSlug).subscribe(slugdata => {
         if(slugdata.status==true){
             this.getactiveslug =  slugdata.data;
-           // console.log(slugdata)
         }
-          console.log(this.getactiveslug)
         })
   }
 
-}
+} 

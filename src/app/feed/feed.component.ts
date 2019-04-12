@@ -29,7 +29,7 @@ getfeeddata;
     }
   }
   pageChange(newPage: number) {
-		this.router.navigate(['feed'], { queryParams: { page: newPage } });
+		this.router.navigate(['feed'],{queryParams:{page:newPage}});
 	}
   ngOnInit() {
       this.feedservice.feedlist().subscribe(feeddata => {
@@ -39,6 +39,8 @@ getfeeddata;
         })
   }
 getslug(index){
-  	this.router.navigate(['singlefeed'], { queryParams: { page: index } });
+  console.log(index);
+  	//this.router.navigate(['singlefeed'],{ queryParams: {page:index} });
+    this.router.navigate(['/singlefeed',index])
 }
 }
