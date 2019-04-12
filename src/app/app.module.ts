@@ -36,7 +36,7 @@ import { SinglefeedComponent } from './feed/singlefeed/singlefeed.component';
       {path:'home', component: HomeComponent},
       {path:'addlist', component: AddlistComponent,canActivate:[DashAuthGuard]},
       {path:'feed', component: FeedComponent,canActivate:[DashAuthGuard]},
-      {path:'singlefeed/:slug', component: SinglefeedComponent},
+      {path:'singlefeed/:slug', component: SinglefeedComponent,canActivate:[DashAuthGuard]},
       {path:'dashboard', component: DashboardComponent,canActivate:[DashAuthGuard]},
       {path:'user',component: UserComponent,
        children:[
