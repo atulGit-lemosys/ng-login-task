@@ -11,7 +11,8 @@
       <span class="float-right text-info"> <p class="mb-0 ml-5" >{{getfeeddatas.created_datetime | slice:0:10}} <span class="ml-2 font-weight-bold">{{getfeeddatas.created_datetime | slice:10:16}} </span> </p> </span>
     </div> 
       <h4 > {{getfeeddatas.slug}} </h4>  
-      <div><a (click)="getslug(getfeeddatas.slug)"  href="javascript:void(0)"  >Read More... </a> </div>
+      <p>   {{(getfeeddatas.description.length>100)? (getfeeddatas.description | slice:0:100):(getfeeddatas.description) }}... </p>
+      <div><a (click)="getslug(getfeeddatas.slug)"  href="javascript:void(0)"  >Read More </a> </div>
   </li>
 </ol>
 <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>

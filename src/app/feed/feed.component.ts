@@ -12,10 +12,9 @@ import 'rxjs/add/operator/switchMap';
 export class FeedComponent implements OnInit {
 getfeeddata;
   config: any; 
-   collection = [];
 
 
-  constructor( private feedservice: FeedService ,private route: ActivatedRoute, private router: Router) { 
+  constructor( private feedservice: FeedService ,private route: ActivatedRoute, private router: Router) {
        this.config = {
     			currentPage: 1,
     			itemsPerPage: 3
@@ -23,11 +22,11 @@ getfeeddata;
     this.route.queryParamMap
             .map(params => params.get('page'))
             .subscribe(page => this.config.currentPage = page);
-
-    for (let i = 1; i <= 100; i++) {
-      this.collection.push(`item ${i}`);
-    }
+    // this.config.currentPage =  this.route.snapshot.params['page'];
   }
+  // pageChange(newPage: number) {
+	// 	this.router.navigate(['feed' , newPage]);
+	// }
   pageChange(newPage: number) {
 		this.router.navigate(['feed'],{queryParams:{page:newPage}});
 	}
